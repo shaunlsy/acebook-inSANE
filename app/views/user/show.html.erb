@@ -1,11 +1,30 @@
 <h3 align="center">  <%= @user.username%>'s wall</h3>
 <div align="center" id="wall_id">
-<p>
+  <p>
 
-</p>
+  </p>
 </div>
 
 <div align="center" id="links">
-
-<%= link_to 'See All Posts', posts_path %>
+  <%= link_to 'See All Posts', posts_path %><br>
+  <%= link_to "Add friend", friendships_path(:friend_id => @user), :method => :post %><br>
 </div>
+
+<h2>Friends</h2>
+<ul>
+  <% for friendship in @user.friendships %>
+    <li>
+      <%=h friendship.friend.username %>
+      (<%= link_to "remove", friendship, :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+
+<%# <p><%= link_to "Find Friends", users_path %></p> %>
+
+<h2>Friended by Users</h2>
+<ul>
+  <% for user in @user.inverse_friends %>
+    <li><%=h user.username %></li>
+  <% end %>
+</ul>
