@@ -6,9 +6,10 @@ feature "Clicks Username link" do
   scenario "clicks username on post index page and is directed to that users page" do 
     user
     post
-    sign_up 
+    sign_up
+    
     click_link("AceBook")
-    click_link("BigUser1")
+    click_link(user.username)
     expect(page).to have_content(user.username)
   end 
 end
