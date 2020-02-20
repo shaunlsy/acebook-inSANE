@@ -3,6 +3,16 @@
   <head>
     <title>🦁 Acebook</title>
   </head>
+  <style>
+  body{
+    text-align: center;
+    background: url(https://images.freecreatives.com/wp-content/uploads/2016/04/Purple-Flower-Website-Background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: white
+  }
+  </style>
 
   <body>
     <% if !!flash[:notice] %>
@@ -27,9 +37,12 @@
             Updated <%= time_ago_in_words(post.updated_at) %> ago, <br>
             Created at <%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
           </small>
+          <br>
           <div>
             <% if post.created_at > 10.minutes.ago %> 
               <td><button class="button" id="update-button"><%= link_to 'Update', edit_post_path(post) %></button></td>
+              <br>
+              <br>
             <% end %>
             <td><%= button_to 'Delete', post_path(post), method: :delete %></td>
           </div>
