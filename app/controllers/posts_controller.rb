@@ -9,11 +9,21 @@ class PostsController < ApplicationController
     @post = Post.create(post_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to user_page_path(current_user.id)
+    if @post.wall_id == @post.user_id
+      redirect_to user_page_path(current_user.id)
+    else
+      redirect_to posts_path
+    end 
   end
 
   def index
-    @posts = Post.all
+    posts_all = Post.all
+    @posts = []
+    posts_all.each do |post|
+      if post.user_id == post.wall_id || post.wall_id.nil?
+        @posts.push(post)
+      end
+    end
   end
 
   def destroy
