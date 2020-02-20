@@ -1,43 +1,40 @@
-<h3 align="center">  <%= @user.username%>'s wall</h3>
-<div align="center" id="wall_id">
 
 <div class="container">
   <div class="row">
+    <h3 align="center">  <%= @user.username%>'s wall</h3>
+      <div align="center" id="wall_id">
+        <div align="center" id="links">
+          <%= link_to 'See All Posts', posts_path %><br>
+          <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %><br>
+        </div>
 
-      <div align="center" id="links">
-        <%= link_to 'See All Posts', posts_path %><br>
-        <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %><br>
+        <h2>Friends</h2>
+        <div>
+          <% for friendship in @user.friendships %>
+            <ul>
+              <%=h friendship.friend.username %>
+              (<%= link_to "remove", friendship, :method => :delete %>)
+            </ul>
+          <% end %>
+        </div>
       </div>
-
-      <h2>Friends</h2>
-        <% for friendship in @user.friendships %>
-          <ul>
-            <%=h friendship.friend.username %>
-            (<%= link_to "remove", friendship, :method => :delete %>)
-          </ul>
+    </div>
+    <div class="welcome-header">
+      <% if !!flash[:notice] %>
+        <% flash.each do |type, message| %>
+          <% if message[0] == "I" %>
+            <p><%= message %><a href=https://www.campaigntoendloneliness.org/feeling-lonely/> End Loneliness </a></p>
+          <% else %>
+            <p><%= message %></p><br>
+          <% end %>
         <% end %>
-      </div>
-  </div>
-
-  <div class="welcome-header">
-    <% if !!flash[:notice] %>
-      <% flash.each do |type, message| %>
-        <% if message[0] == "I" %>
-          <p><%= message %><a href=https://www.campaigntoendloneliness.org/feeling-lonely/> End Loneliness </a></p>
-        <% else %>
-          <p><%= message %></p><br>
       <% end %>
-    <% end %>
-    <% end %>
+    </div>
+    <%= link_to new_post_path(:wall_id => params[:id]) do %>
+        New post
+    <%end %>
+    <div align="center" id="links">
+      <%= render 'shared/post', obj: @posts %>
+    </div>
   </div>
-</div>
-
-<%= link_to new_post_path(:wall_id => params[:id]) do %>
-      New post
-<%end %>
-<div align="center" id="links">
-
-<%= link_to 'See All Posts', posts_path %>
-
-<%= render 'shared/post', obj: @posts %>
 </div>
