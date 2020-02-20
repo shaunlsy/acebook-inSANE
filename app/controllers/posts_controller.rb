@@ -8,8 +8,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     @post.user_id = current_user.id
-   p ".... params           ....."
-   p post_params
+
     @post.save
     #if @post.wall_id == @post.user_id
       redirect_to user_page_path(current_user.id) # posts_url # what is the path to get individual page 
