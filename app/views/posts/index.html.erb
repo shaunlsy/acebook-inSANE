@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -14,9 +13,10 @@
 
     <h3>Welcome to Acebook you are logged in as: <%= current_user.username %></h3>
 
-    <%= link_to new_post_path(:wall_id => params[:id]) do %>
+    <h4><%= link_to new_post_path(:wall_id => params[:id]) do %>
       New post
-    <% end %>
+      <% end %>
+    </h4>
   
     <% @posts.reverse.each do |post| %>
         <div class="post-card" >

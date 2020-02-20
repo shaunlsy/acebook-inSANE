@@ -57,6 +57,4 @@ RSpec.feature "Timeline", type: :feature do
     Timecop.return
   end
 
-  
-
 end
