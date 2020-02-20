@@ -1,11 +1,38 @@
 <h3 align="center">  <%= @user.username%>'s wall</h3>
 <div align="center" id="wall_id">
-<p>
 
-</p>
+<div class="container">
+  <div class="row">
+
+      <div align="center" id="links">
+        <%= link_to 'See All Posts', posts_path %><br>
+        <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %><br>
+      </div>
+
+      <h2>Friends</h2>
+        <% for friendship in @user.friendships %>
+          <ul>
+            <%=h friendship.friend.username %>
+            (<%= link_to "remove", friendship, :method => :delete %>)
+          </ul>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="welcome-header">
+    <% if !!flash[:notice] %>
+      <% flash.each do |type, message| %>
+        <% if message[0] == "I" %>
+          <p><%= message %><a href=https://www.campaigntoendloneliness.org/feeling-lonely/> End Loneliness </a></p>
+        <% else %>
+          <p><%= message %></p><br>
+      <% end %>
+    <% end %>
+    <% end %>
+  </div>
 </div>
 
-<div align="center" id="links">
+
 
 <%= link_to 'See All Posts', posts_path %>
 
