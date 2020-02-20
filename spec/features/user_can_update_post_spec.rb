@@ -8,6 +8,7 @@ RSpec.feature "Timeline", type: :feature do
   
   scenario "Can view update button" do
     sign_up
+    click_link("See All Posts")
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"
@@ -17,6 +18,7 @@ RSpec.feature "Timeline", type: :feature do
   
   scenario "Can update post" do
     sign_up
+    click_link("See All Posts")
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"
@@ -42,6 +44,7 @@ RSpec.feature "Timeline", type: :feature do
 
   scenario "Can't update posts after ten minutes" do
     sign_up
+    click_link("See All Posts")
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     time = Time.utc(2020, 02, 18, 17, 27, 20)

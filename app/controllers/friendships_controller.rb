@@ -24,27 +24,13 @@ class FriendshipsController < ApplicationController
   # POST /friendships
   # POST /friendships.json
   def create
-    # @friendship = Friendship.new(friendship_params)
-
-    # respond_to do |format|
-    #   if @friendship.save
-    #     format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
-    #     format.json { render :show, status: :created, location: @friendship }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @friendship.errors, status: :unprocessable_entity }
-    #   end
-    # end
-    p "im creating friendships"
-    @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-    p "inserted into database"
-    if @friendship.save
-      flash[:notice] = "Added friend."
-      redirect_to root_url
+    if current_user.id == params[:friend_id].to_i
+      flash[:notice] = "If you are lonley call a helpline 0344 871 11 11"
     else
-      flash[:error] = "Unable to add friend."
-      redirect_to root_url
-    end
+      @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
+      redirect_to_wall_and_save
+    end 
+    redirect_to user_page_path(current_user)
   end
 
   # PATCH/PUT /friendships/1
@@ -64,15 +50,10 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1
   # DELETE /friendships/1.json
   def destroy
-    # @friendship.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
     flash[:notice] = "Removed friendship."
-    redirect_to current_user
+    redirect_to user_page_path(current_user)
   end
 
   private
@@ -85,4 +66,8 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:user_id, :friend_id)
   end
+
+  def redirect_to_wall_and_save
+    @friendship.save ? flash[:notice] = "Added friend." : flash[:error] = "Unable to add friend." 
+  end 
 end
