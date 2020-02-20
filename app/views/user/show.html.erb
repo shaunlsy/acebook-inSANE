@@ -1,24 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3 align="center">  <%= @user.username%>'s wall</h3>
-      <div align="center" id="wall_id">
-        <div align="center" id="links">
-          <%= link_to 'See All Posts', posts_path %><br>
-          <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %><br>
-        </div>
-        <div>
-          <% if @user.username == current_user.username %>
-            <h2>Friends</h2>
-            <% for friendship in @user.friendships %>
-              <ul>
-                <%=h friendship.friend.username %>
-                (<%= link_to "remove", friendship, :method => :delete %>)
-              </ul>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+
     <div class="welcome-header">
       <% if !!flash[:notice] %>
         <% flash.each do |type, message| %>
@@ -30,23 +12,43 @@
         <% end %>
       <% end %>
     </div>
-    <%= link_to new_post_path(:wall_id => params[:id]) do %>
-        New post
-    <%end %>
-    <div align="center" id="links">
-      <%= render 'shared/post', obj: @posts %>
-    </div>
 
-  <p><%= link_to "Show All Friends", users_path %></p>
-
-    <% if @user.username != current_user.username %>
-      <h2>Friends</h2>
-      <ul>
-        <% for user in @user.inverse_friends %>
-          <li><%=h user.username %></li>
+    <div class="column left">
+      <div class="profile-container">
+        <%= @user.username%>'s wall
+        <div class="profile-small-font" id="wall_id">
+          <div id="links">
+            <%= link_to 'See All Posts', posts_path %><br>
+            <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %><br>
+          </div>
+        </div>
+      </div>
+      <div class="friends-list-container">
+        <% if @user.username == current_user.username %>
+          <h2>Friends</h2>
+          <% for friendship in @user.friendships %>
+              <%=h friendship.friend.username %>
+              (<%= link_to "remove", friendship, :method => :delete %>)
+          <% end %>
         <% end %>
-      </ul>
-    <% end %>
-
+        <% if @user.username != current_user.username %>
+        <h2>Friends</h2>
+        <ul>
+          <% for user in @user.inverse_friends %>
+            <li><%=h user.username %></li>
+          <% end %>
+        </ul>
+        <% end %>
+        <p><%= link_to "Show All Friends", users_path %></p>
+      </div>
+    </div> <!--  column left  -->
+    <div class="column right ">
+      <%= link_to new_post_path(:wall_id => params[:id]) do %>
+          New post
+      <%end %>
+      <div class="profile-posts" id="links">
+        <%= render 'shared/post', obj: @posts %>
+      </div>
+    </div>
   </div><!-- row -->
 </div><!-- container -->
