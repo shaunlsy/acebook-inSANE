@@ -14,6 +14,10 @@
 
     <h3>Welcome to Acebook you are logged in as: <%= current_user.username %></h3>
 
+    <%= link_to new_post_path(:wall_id => params[:id]) do %>
+      New post
+    <% end %>
+
     <h4>
       <%= link_to new_post_path do %>
         New post

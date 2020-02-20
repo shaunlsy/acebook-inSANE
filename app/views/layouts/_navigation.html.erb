@@ -12,6 +12,10 @@
       </button>
       <%#<a class="navbar-brand" href="#">AceBook</a>%>
       <%= link_to 'AceBook', '/posts', class: 'navbar-brand'%>
+        <% if logged_in? %>
+          <%= link_to 'Profiles', '/users', class: 'navbar-brand'%>
+          <%= link_to 'My Profile', user_page_path(current_user.id), class: 'navbar-brand'%>
+         <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

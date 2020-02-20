@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/user/create', to: 'user#new'
   post '/user/create', to: 'user#create'
   get '/user/:id', to: 'user#show', as: 'user_page'
+  get '/users', to: 'user#index'
   
 
   delete '/posts/:id(.:format)', to: 'posts#destroy'

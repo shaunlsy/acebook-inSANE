@@ -32,7 +32,10 @@
   </div>
 </div>
 
-
+<%= link_to new_post_path(:wall_id => params[:id]) do %>
+      New post
+<%end %>
+<div align="center" id="links">
 
 <%= link_to 'See All Posts', posts_path %>
 
