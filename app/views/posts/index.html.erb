@@ -15,7 +15,7 @@
 
     <h4>Welcome to Acebook you are logged in as: <%= current_user.username %></h4>
 
-    <%= link_to new_post_path do %>
+    <%= link_to new_post_path(:wall_id => params[:id]) do %>
       New post
     <% end %>
 <% @posts.reverse.each do |post| %>

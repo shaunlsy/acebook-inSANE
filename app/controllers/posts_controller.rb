@@ -8,8 +8,14 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     @post.user_id = current_user.id
+   p ".... params           ....."
+   p post_params
     @post.save
-    redirect_to user_page_url # posts_url # what is the path to get individual page 
+    #if @post.wall_id == @post.user_id
+      redirect_to user_page_path(current_user.id) # posts_url # what is the path to get individual page 
+    #else
+      #redirect_to posts_path
+    #end 
   end
 
   def index
@@ -44,6 +50,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:message)
+    params.require(:post).permit(:message, :wall_id)
   end
 end
