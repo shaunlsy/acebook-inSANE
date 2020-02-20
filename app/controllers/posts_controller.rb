@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = Post.create(post_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to posts_url
+    redirect_to user_page_url # posts_url # what is the path to get individual page 
   end
 
   def index

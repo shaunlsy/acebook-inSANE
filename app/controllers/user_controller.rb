@@ -25,6 +25,10 @@ class UserController < ApplicationController
     @posts = Post.where(user_id: @user.id)
   end
 
+  def index
+    @users = User.all    
+  end 
+
   private
 
   def user_params
