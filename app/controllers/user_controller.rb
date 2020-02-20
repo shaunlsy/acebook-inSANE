@@ -22,7 +22,8 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = Post.where(wall_id: @user.id, wall_id: nil)
+    @posts = Post.where(wall_id: @user.id) 
+    # wall_id: nil
   end
 
   def index

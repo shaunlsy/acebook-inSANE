@@ -1,0 +1,76 @@
+.profile-container {
+  text-align: left;
+  font-size: 50px;
+  font-family: "Exo 2", sans-serif;
+  min-height: 135px;
+  // max-height: 135px;
+  max-width: 300px;
+  margin: left;
+  box-shadow: 1px 1px 4px rgba(0,0,0, 0.3);
+  color: black;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  margin-left: -50px;
+  background-color: white;
+  .profile-small-font{ 
+    font-size: 30px;
+  }  
+}
+
+.friends-list-container{
+  text-align: left;
+  font-size: 20px;
+  font-family: "Exo 2", sans-serif;
+  padding-bottom: 0px;
+  min-height: 135px;
+  // max-height: 135px;
+  max-width: 300px;
+  margin: left;
+  box-shadow: 1px 1px 4px rgba(0,0,0, 0.3);
+  color: black;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  margin-left: -50px;
+}
+
+.profile-posts{
+  text-align: centre;
+  font-size: 20px;
+  font-family: "Exo 2", sans-serif;
+  min-height: 135px;
+  // max-height: 135px;
+  max-width: 800px;
+  box-shadow: 1px 1px 4px rgba(0,0,0, 0.3);
+  color: black;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+}
+
