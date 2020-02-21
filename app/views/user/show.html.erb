@@ -13,7 +13,7 @@
         <%= @user.username%>'s wall
         <div class="profile-small-font" id="wall_id">
           <div id="links">
-            <%= link_to 'See All AgeBook Posts', posts_path %><br>
+            <%= link_to 'See All AceBook Posts', posts_path %><br>
             <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %><br>
           </div>
         </div>
@@ -34,7 +34,7 @@
           <% end %>
         </ul>
         <% end %>
-        <p><%= link_to "Show All AgeBook Users", users_path %></p>
+        <p><%= link_to "Show All AceBook Users", users_path %></p>
       </div>
     </div> <!--  column left  -->
 
@@ -42,11 +42,7 @@
       <div class="welcome-header">
         <% if !!flash[:notice] %>
           <% flash.each do |type, message| %>
-            <% if message[0] == "I" %>
-              <h1><%= message %><a href=https://www.campaigntoendloneliness.org/feeling-lonely/> End Loneliness </a></h1>
-            <% else %>
-              <p><%= message %></p><br>
-            <% end %>
+            <p><%= message %></p><br>
           <% end %>
         <% end %>
       </div>
