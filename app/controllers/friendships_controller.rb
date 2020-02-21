@@ -25,7 +25,7 @@ class FriendshipsController < ApplicationController
   # POST /friendships.json
   def create
     if current_user.id == params[:friend_id].to_i
-      flash[:notice] = "You are trying to add yourself as friend. Don't worry. If you are lonley call a helpline 0344 871 11 11."
+      flash[:notice] = "If you are lonley call a helpline 0344 871 11 11."
     else
       @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
       redirect_to_wall_and_save
