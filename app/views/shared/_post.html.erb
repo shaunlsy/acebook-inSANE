@@ -1,258 +1,54 @@
-
-<div class="row">  
-  <% obj.reverse.each do |post| %>
-    <br>
-    <div class="box">
-      <div class="box-header">    
-        <h3><img src="https://media2.giphy.com/media/1L5YuA6wpKkNO/200.webp?cid=790b761127f955bedfedc953648903581a07e57fdaffab15&rid=200.webp" alt="" />
-          <%= link_to User.find(post.user_id).username, user_page_path(User.find(post.user_id))%>
-          <span>Updated <%= time_ago_in_words(post.updated_at) %> ago, <i class="fa fa-globe"></i></span>
-          <span>Created at <%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %><i class="fa fa-globe"></i></span>
-        </h3>
-        <span><i class="fa fa-angle-down"></i></span>
-        <div class="window"><span></span></div>
-      </div>
-      <div class="box-content">
-        <div class="content">
-          <div class="bottom">
-            <p><%= post.message.gsub(/\n/, '<br/>').html_safe %></p>
-            <span><span class="fa fa-search-plus"></span></span>
-            <div class="next-bottom">
-              <%= button_to 'Delete', post_path(post), method: :delete, id: "delete-button" %>
-              <% if post.created_at > 10.minutes.ago %> 
-                <button class="button" id="update-button"><%= link_to 'Update', edit_post_path(post) %></button>
-              <% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset = "UTF-8">
+</head>
+<body>
+    <div class="row">  
+      <% obj.reverse.each do |post| %>
+        <br>
+        <div class="box">
+          <div class="box-header">    
+            <h3><img src="https://media2.giphy.com/media/1L5YuA6wpKkNO/200.webp?cid=790b761127f955bedfedc953648903581a07e57fdaffab15&rid=200.webp" alt="" />
+              <%= link_to User.find(post.user_id).username, user_page_path(User.find(post.user_id))%>
+              <span>Updated <%= time_ago_in_words(post.updated_at) %> ago, <i class="fa fa-globe"></i></span>
+              <span>Created at <%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %><i class="fa fa-globe"></i></span>
+            </h3>
+            <span><i class="fa fa-angle-down"></i></span>
+            <div class="window"><span></span></div>
+          </div>
+          <div class="box-content">
+            <div class="content">
+              <div class="bottom">
+                <p><%= post.message.gsub(/\n/, '<br/>').html_safe %></p>
+                <span><span class="fa fa-search-plus"></span></span>
+                <div class="next-bottom", style="display: inline;">
+                  <%= button_to 'Delete', post_path(post), method: :delete, id: "delete-button" %>
+                  <% if post.created_at > 10.minutes.ago %> 
+                    <button class="button" id="update-button"><%= link_to 'Update', edit_post_path(post) %></button>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-likes">
+            <div class="row">
+              <span><a href="#"><img src="https://goo.gl/oM0Y8G" alt="" /></a></span>
+              <span><a href="#"><img src="https://goo.gl/vswgSn" alt="" /></a></span>
+              <span><a href="#"><img src="https://goo.gl/4W27eB" alt="" /></a></span>
+              <span><a href="#">+92345675432229</a></span>
+              <span>Like this</span>
+            </div>
+            <div class="row">
+              <span>123456789765432 comments</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="box-likes">
-        <div class="row">
-          <span><a href="#"><img src="https://goo.gl/oM0Y8G" alt="" /></a></span>
-          <span><a href="#"><img src="https://goo.gl/vswgSn" alt="" /></a></span>
-          <span><a href="#"><img src="https://goo.gl/4W27eB" alt="" /></a></span>
-          <span><a href="#">+92345675432229</a></span>
-          <span>Like this</span>
-        </div>
-        <div class="row">
-          <span>123456789765432 comments</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end %>
+      <% end %>
 
 
-</div><!--  row  -->
+    </div><!--  row  -->
+    </body>
+  </html>
 
-<style>
-#update-button, #delete-button {
-  display:inline-block;
-  width: 300px;
-  height: 40px;
-}
-
-.next-bottom {
-  display:inline-block;
-}
-
-.box {
-  background: #FFF;
-  border-radius: 4px;
-  box-shadow: 0 0 50px 5px rgba(0,0,0,.25);
-  height: auto;
-  margin: 10px auto 30px;
-  max-width: 800px;
-  overflow: hidden;
-  padding: 20px 0 0;
-  position: relative;
-}
-.box > [class*="box-"] {
-  margin: 0 auto;
-  padding: 0 30px;
-  position: relative;
-}
-.box > [class*="box-"] img {
-  display: block;
-  width: 100%;
-}
-.box > .box-header {
-  margin: 0 auto;
-  padding: 0 30px 10px;
-  width: initial;
-}
-.box > .box-header > h3 {
-  text-align: left;
-  font-size: 25px;
-  font-weight: 700;
-  height: 60px;
-  margin: 5px auto;
-  overflow: hidden;
-  padding: 5px 0 0;
-  position: relative;
-}
-
-.box > .box-header > h3 > span {
-  color: #9197A3;
-  display: block;
-  font-size: 10px;
-  font-weight: 400;
-  margin-top: -8px;
-  padding: 2px;
-}
-.box > .box-header > h3 > span .fa {
-  font-size: 15px;
-  margin-left: 5px;
-}
-.box > .box-header > span {
-  background: #F4F4F4;
-  border-radius: 3px;
-  color: #BCBFC6;
-  cursor: pointer;
-  font-size: 15px;
-  height: 18px;
-  line-height: 18px;
-  margin: 5px auto 0;
-  padding: 3px 4px;
-  position: absolute;
-  right: 350px;
-  top: 0;
-}
-.box > .box-header > span:hover {
-  color: #888;
-}
-.box > .box-header > span > i {
-  height: 18px;
-  line-height: 18px;
-}
-.box > .box-header img {
-  border-radius: 100px;
-  float: left;
-  height: 60px;
-  margin: -5px 20px 0 0;
-  object-fit: cover;
-  width: 60px;
-
-  vertical-align: middle;
-}
-.box > .box-content {
-  text-align: left;
-  margin: 0;
-  overflow: hidden;
-  padding: 10;
-  position: relative;
-  width: initial;
-}
-.box > .box-content > .content {
-  height: auto;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: relative;
-  width: initial;
-}
-.box > .box-content > .bottom {
-  margin: 0 auto;
-  padding: 0 30px; 
-  position: relative;
-  width: initial;
-}
-.box > .box-content > .bottom > p {
-  color: #71747A;
-  font-size: 15px;
-  line-height: 20px;
-  margin: 0;
-  padding: 20px 0;
-}
-.box > .box-content > .bottom > span {
-  background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0));
-  height: 160px;
-  left: 0;
-  line-height: 160px;
-  margin: 0 auto;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  text-align: right;
-  top: -160px;
-  vertical-align: bottom;
-  width: 100%;
-}
-.box > .box-content > .bottom > span > span {
-  background: rgba(0,0,0,.35);
-  border-radius: 4px;
-  bottom: 0;
-  color: #FFF;
-  cursor: pointer;
-  font-size: 20px;
-  margin: 0 30px 25px auto;
-  opacity: .75;
-  overflow: hidden;
-  padding: 10px;
-  position: absolute;
-  right: 0;
-  top: auto;
-  -webkit-transition: all .25s ease-in-out;
-     -moz-transition: all .25s ease-in-out;
-          transition: all .25s ease-in-out;
-}
-.box > .box-content > .bottom > span > span:hover {
-  opacity: 1;
-}
-.box > .box-content > .bottom > .next-bottom {
-  color: #71747A;
-  font-size: 15px;
-  line-height: 20px;
-  margin: 0;
-  padding: 20px 0;
-}
-.box-likes {
-  margin: 0 auto;
-  overflow: hidden;
-  padding: 0 30px;
-  position: relative;
-}
-.box-likes > .row {
-  border-top: 1px solid #F4F4F4;
-  padding: 20px 0;
-}
-.box-likes > .row > span {
-  display: inline-block;
-  font-size: 13px;
-  margin: 0 2px 0 0;
-  position: relative;
-  vertical-align: middle;
-}
-.box-likes > .row:first-child {
-  float: left;
-  width: 60%;
-}
-.box-likes > .row:last-child {
-  float: left;
-  text-align: end;
-  width: 40%;
-}
-.box-likes > .row:first-child > span:nth-child(4) {
-  background: #4D679F;
-  border-radius: 50px;
-  font-weight: bold;
-  padding: 0 8px 0 6px;
-}
-.box-likes > .row:first-child > span:nth-child(4) > a {
-  color: #FFF;
-}
-.box-likes > .row:first-child > span,
-.box-likes > .row:last-child > span {
-  color: #9197A3;
-}
-.box-likes > .row:last-child > span {
-  display: inline-block;
-  verrtical-align: middle;
-}
-.box-likes > .row img {
-  border-radius: 100px;
-  height: 28px;
-  object-fit: cover;
-  width: 28px;
-}
-</style>
