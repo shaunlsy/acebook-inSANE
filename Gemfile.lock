@@ -88,7 +88,6 @@ GEM
     ffi (1.12.2)
     ffi (1.12.2-java)
     ffi (1.12.2-x64-mingw32)
-    ffi (1.12.2-x86-mingw32)
     gh (0.14.0)
       addressable
       backports
@@ -142,14 +141,11 @@ GEM
     nokogiri (1.8.2-java)
     nokogiri (1.8.2-x64-mingw32)
       mini_portile2 (~> 2.3.0)
-    nokogiri (1.8.2-x86-mingw32)
-      mini_portile2 (~> 2.3.0)
     parallel (1.19.1)
     parser (2.7.0.2)
       ast (~> 2.4.0)
     pg (1.0.0)
     pg (1.0.0-x64-mingw32)
-    pg (1.0.0-x86-mingw32)
     public_suffix (3.0.2)
     puma (3.11.3)
     puma (3.11.3-java)
@@ -238,8 +234,6 @@ GEM
       ffi (~> 1.9)
     sassc (2.2.1-x64-mingw32)
       ffi (~> 1.9)
-    sassc (2.2.1-x86-mingw32)
-      ffi (~> 1.9)
     selenium-webdriver (3.5.2)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
@@ -303,7 +297,6 @@ PLATFORMS
   java
   ruby
   x64-mingw32
-  x86-mingw32
   x86-mswin32
 
 DEPENDENCIES
