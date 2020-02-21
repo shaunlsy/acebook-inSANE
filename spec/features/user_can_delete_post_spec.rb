@@ -23,7 +23,7 @@ RSpec.feature "Timeline", type: :feature do
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"
-    first('.next-bottom').click_button 'Delete'
+    click_link 'Delete'
     expect(page).not_to have_content("Hello, world!")
     expect(page).not_to have_content(Time.zone.now.strftime("%Y-%m-%d %H:%M:%S").to_s)
   end
@@ -32,7 +32,7 @@ RSpec.feature "Timeline", type: :feature do
     post
     sign_up
     click_link("See All AgeBook Posts")
-    click_button("Delete")
+    click_link("Delete")
     expect(page).to have_content("Thats not your post to delete")
   end
 

@@ -17,5 +17,5 @@ Rails.application.routes.draw do
 
   delete '/posts/:id(.:format)', to: 'posts#destroy'
   resources :posts
-  
+2  
 end
