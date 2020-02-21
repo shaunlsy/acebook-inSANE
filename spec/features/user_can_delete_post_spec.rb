@@ -8,7 +8,7 @@ RSpec.feature "Timeline", type: :feature do
 
   scenario "Can view delete button" do
     sign_up
-    click_link("See All Posts")
+    click_link("See All AgeBook Posts")
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"
@@ -19,7 +19,7 @@ RSpec.feature "Timeline", type: :feature do
   # travis doesn't like the "accept_alert"
   scenario "Can delete post" do
     sign_up
-    click_link("See All Posts")
+    click_link("See All AgeBook Posts")
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"
@@ -31,7 +31,7 @@ RSpec.feature "Timeline", type: :feature do
   scenario "Can’t delete other users post" do
     post
     sign_up
-    click_link("See All Posts")
+    click_link("See All AgeBook Posts")
     click_button("Delete")
     expect(page).to have_content("Thats not your post to delete")
   end

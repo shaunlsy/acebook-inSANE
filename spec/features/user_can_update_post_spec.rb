@@ -8,7 +8,7 @@ RSpec.feature "Timeline", type: :feature do
   
   scenario "Can view update button" do
     sign_up
-    click_link("See All Posts")
+    click_link("See All AgeBook Posts")
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"
@@ -18,7 +18,7 @@ RSpec.feature "Timeline", type: :feature do
   
   scenario "Can update post" do
     sign_up
-    click_link("See All Posts")
+    click_link("See All AgeBook Posts")
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"
@@ -37,14 +37,14 @@ RSpec.feature "Timeline", type: :feature do
     fill_in "email", with: user.email
     fill_in "password", with: user.password
     click_button("Login")
-    click_link("See All Posts")
+    click_link("See All AgeBook Posts")
     click_link("Update")
     expect(page).to have_content("This is not your post to update")
   end
 
   scenario "Can't update posts after ten minutes" do
     sign_up
-    click_link("See All Posts")
+    click_link("See All AgeBook Posts")
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     time = Time.utc(2020, 02, 18, 17, 27, 20)
