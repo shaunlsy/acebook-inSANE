@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     session[:my_previous_url] = URI(request.referer || '').path
-    redirect_to session[:my_previous_url], notice: "This is not your post to update!!!" unless  @post.user_id == current_user.id
+    redirect_to session[:my_previous_url], notice: "This is not your post to update!!!" unless @post.user_id == current_user.id
   end
 
   def update

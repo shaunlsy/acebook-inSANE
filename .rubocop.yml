@@ -38,6 +38,7 @@ AllCops:
     - "vendor/**/*"
     - "app/models/user.rb"
     - "app/controllers/friendships_controller.rb"
+    - "app/controllers/posts_controller.rb"
 
 #    _____               ____ ____        __     _         __
 #   / ___/ _____ ____ _ / __// __/____   / /    (_)____   / /_
