@@ -3,17 +3,15 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
+    session[:my_previous_url] = URI(request.referer || '').path
+  
   end
 
   def create
     @post = Post.create(post_params)
     @post.user_id = current_user.id
     @post.save
-    if @post.wall_id == @post.user_id
-      redirect_to user_page_path(current_user.id)
-    else
-      redirect_to posts_path
-    end 
+    redirect_to session[:my_previous_url]
   end
 
   def index
@@ -30,22 +28,23 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.user_id == current_user.id
       @post.destroy
+      redirect_back fallback_location: @post
     else
       flash[:notice] = "Thats not your post to delete!!!"
     end
-    redirect_to posts_path
   end
 
   def edit
     @post = Post.find(params[:id])
+    session[:my_previous_url] = URI(request.referer || '').path
     logic = @post.user_id == current_user.id
-    redirect_to posts_path, notice: "This is not your post to update!!!" unless logic
+    redirect_to session[:my_previous_url], notice: "This is not your post to update!!!" unless logic
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:id])     
     if @post.update(params[:post].permit(:message))
-      redirect_to posts_url
+      redirect_to session[:my_previous_url]
     else
       render 'edit'
     end
@@ -56,4 +55,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:message, :wall_id)
   end
+ 
 end
