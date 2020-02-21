@@ -19,17 +19,19 @@
           </ul>
         </div>
       <% end %>
-
-      <p>
-        <%= f.label :message %><br>
-        <div id="updatePost">
-          <%= f.text_area :message %>
-        </div>
-      </p>
+      
+      <div class="update-post-size">
+        <p>
+          <%= f.label :message %><br>
+          <div id="updatePost">
+            <%= f.text_area :message %>
+          </div>
+        </p>
 
       <p>
         <%= f.submit %>
       </p>
+      </div>
     <% end %>
   </body>
 </html>

@@ -1,50 +1,59 @@
-<div class="container">
-  <div class="column left">
-    <div class="profile-container">
-      <%= @user.username%>'s wall
-      <div class="profile-small-font" id="wall_id">
-        <div id="links">
-          <%= link_to 'See All AgeBook Posts', posts_path %><br>
-          <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %><br>
+ <style>
+ body {
+    background-image: url('https://media1.giphy.com/media/zTQQPJXn1j8Jy/giphy.gif?cid=790b7611cf87895faeb28d9b9d2346d5ce5d17f6e5314046&rid=giphy.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="column left">
+      <div class="profile-container">
+        <%= @user.username%>'s wall
+        <div class="profile-small-font" id="wall_id">
+          <div id="links">
+            <%= link_to 'See All AgeBook Posts', posts_path %><br>
+            <%= link_to "Add friend", friendships_path(:friend_id => @user.id), :method => :post %><br>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="friends-list-container">
-      <% if @user.username == current_user.username %>
-        <h2>Friends</h2>
-        <% for friendship in @user.friendships %>
-            <ul><%=h friendship.friend.username %>
-            (<%= link_to "remove", friendship, :method => :delete %>)</ul>
-        <% end %>
-      <% end %>
-      <% if @user.username != current_user.username %>
-      <h2>Friends</h2>
-      <ul>
-        <% for user in @user.inverse_friends %>
-          <li><%=h user.username %></li>
-        <% end %>
-      </ul>
-      <% end %>
-      <p><%= link_to "Show All AgeBook Users", users_path %></p>
-    </div>
-  </div> <!--  column left  -->
-
-  <div class="column right ">
-    <div class="welcome-header">
-      <% if !!flash[:notice] %>
-        <% flash.each do |type, message| %>
-          <% if message[0] == "Y" %>
-            <h1><%= message %><a href=https://www.campaigntoendloneliness.org/feeling-lonely/> End Loneliness </a></h1>
-          <% else %>
-            <p><%= message %></p><br>
+      <div class="friends-list-container">
+        <% if @user.username == current_user.username %>
+          <h2>Friends</h2>
+          <% for friendship in @user.friendships %>
+              <ul><%=h friendship.friend.username %>
+              (<%= link_to "remove", friendship, :method => :delete %>)</ul>
           <% end %>
         <% end %>
-      <% end %>
-    </div>
-    <%= link_to new_post_path(:wall_id => params[:id]) do %>
-        <h1>New post</h1>
-    <%end %>
-    <%= render 'shared/post', obj: @posts %>
-  </div>
-</div><!-- container -->
+        <% if @user.username != current_user.username %>
+        <h2>Friends</h2>
+        <ul>
+          <% for user in @user.inverse_friends %>
+            <li><%=h user.username %></li>
+          <% end %>
+        </ul>
+        <% end %>
+        <p><%= link_to "Show All AgeBook Users", users_path %></p>
+      </div>
+    </div> <!--  column left  -->
 
+    <div class="column right ">
+      <div class="welcome-header">
+        <% if !!flash[:notice] %>
+          <% flash.each do |type, message| %>
+            <% if message[0] == "Y" %>
+              <h1><%= message %><a href=https://www.campaigntoendloneliness.org/feeling-lonely/> End Loneliness </a></h1>
+            <% else %>
+              <p><%= message %></p><br>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= link_to new_post_path(:wall_id => params[:id]) do %>
+          <h1>New post</h1>
+      <%end %>
+      <%= render 'shared/post', obj: @posts %>
+    </div>
+  </div><!-- container -->
+</body>
