@@ -32,12 +32,12 @@ require:
 
 AllCops:
   Exclude:
-    - 'bin/*'
-    - 'config/**/*'
-    - 'db/**/*'
-    - 'vendor/**/*'
-    - 'app/models/user.rb'
-    - 'app/controllers/friendships_controller.rb'
+    - "bin/*"
+    - "config/**/*"
+    - "db/**/*"
+    - "vendor/**/*"
+    - "app/models/user.rb"
+    - "app/controllers/friendships_controller.rb"
 
 #    _____               ____ ____        __     _         __
 #   / ___/ _____ ____ _ / __// __/____   / /    (_)____   / /_
@@ -85,14 +85,14 @@ AllCops:
 
 Layout/LineLength:
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
+    - "spec/**/*"
+    - "test/**/*"
   Max: 100
 
 Metrics/BlockLength:
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
+    - "spec/**/*"
+    - "test/**/*"
 
 # Code Style
 # ==========
