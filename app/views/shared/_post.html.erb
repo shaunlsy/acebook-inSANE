@@ -1,49 +1,43 @@
-
-<div class="row">  
-  <% obj.reverse.each do |post| %>
-    <br>
-    <div class="box">
-      <div class="box-header">    
-        <h3><img src="https://media2.giphy.com/media/1L5YuA6wpKkNO/200.webp?cid=790b761127f955bedfedc953648903581a07e57fdaffab15&rid=200.webp" alt="" />
-          <%= link_to User.find(post.user_id).username, user_page_path(User.find(post.user_id))%>
-          <span>Updated <%= time_ago_in_words(post.updated_at) %> ago, <i class="fa fa-globe"></i></span>
-          <span>Created at <%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %><i class="fa fa-globe"></i></span>
-        </h3>
-        <span><i class="fa fa-angle-down"></i></span>
-        <div class="window"><span></span></div>
-      </div>
-      <div class="box-content">
-        <div class="content">
-          <div class="bottom">
-            <p><%= post.message.gsub(/\n/, '<br/>').html_safe %></p>
-            <span><span class="fa fa-search-plus"></span></span>
-            <div class="next-bottom">
-              <%= button_to 'Delete', post_path(post), method: :delete, id: "delete-button" %>
-              <% if post.created_at > 10.minutes.ago %> 
-                <button class="button" id="update-button"><%= link_to 'Update', edit_post_path(post) %></button>
-              <% end %>
-            </div>
+<% obj.reverse.each do |post| %>
+  <br>
+  <div class="box">
+    <div class="box-header">    
+      <h3><img src="https://media2.giphy.com/media/1L5YuA6wpKkNO/200.webp?cid=790b761127f955bedfedc953648903581a07e57fdaffab15&rid=200.webp" alt="" />
+        <%= link_to User.find(post.user_id).username, user_page_path(User.find(post.user_id))%>
+        <span>Updated <%= time_ago_in_words(post.updated_at) %> ago, <i class="fa fa-globe"></i></span>
+        <span>Created at <%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %><i class="fa fa-globe"></i></span>
+      </h3>
+      <span><i class="fa fa-angle-down"></i></span>
+      <div class="window"><span></span></div>
+    </div>
+    <div class="box-content">
+      <div class="content">
+        <div class="bottom">
+          <p><%= post.message.gsub(/\n/, '<br/>').html_safe %></p>
+          <span><span class="fa fa-search-plus"></span></span>
+          <div class="next-bottom">
+            <%= button_to 'Delete', post_path(post), method: :delete, id: "delete-button" %>
+            <% if post.created_at > 10.minutes.ago %> 
+              <button class="button" id="update-button"><%= link_to 'Update', edit_post_path(post) %></button>
+            <% end %>
           </div>
         </div>
       </div>
-      <div class="box-likes">
-        <div class="row">
-          <span><a href="#"><img src="https://goo.gl/oM0Y8G" alt="" /></a></span>
-          <span><a href="#"><img src="https://goo.gl/vswgSn" alt="" /></a></span>
-          <span><a href="#"><img src="https://goo.gl/4W27eB" alt="" /></a></span>
-          <span><a href="#">+92345675432229</a></span>
-          <span>Like this</span>
-        </div>
-        <div class="row">
-          <span>123456789765432 comments</span>
-        </div>
+    </div>
+    <div class="box-likes">
+      <div class="row">
+        <span><a href="#"><img src="https://goo.gl/oM0Y8G" alt="" /></a></span>
+        <span><a href="#"><img src="https://goo.gl/vswgSn" alt="" /></a></span>
+        <span><a href="#"><img src="https://goo.gl/4W27eB" alt="" /></a></span>
+        <span><a href="#">+92345675432229</a></span>
+        <span>Like this</span>
+      </div>
+      <div class="row">
+        <span>123456789765432 comments</span>
       </div>
     </div>
   </div>
-  <% end %>
-
-
-</div><!--  row  -->
+<% end %>
 
 <style>
 #update-button, #delete-button {
