@@ -3,14 +3,12 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
-    p URI(request.referer  || '').path
-    session[:my_previous_url] =  URI(request.referer  || '').path
+    session[:my_previous_url] = URI(request.referer || '').path
   
   end
 
   def create
     @post = Post.create(post_params)
-    p URI(request.referer  || '').path
     @post.user_id = current_user.id
     @post.save
     redirect_to session[:my_previous_url]
@@ -38,15 +36,13 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    session[:my_previous_url] = URI(request.referer  || '').path
+    session[:my_previous_url] = URI(request.referer || '').path
     logic = @post.user_id == current_user.id
     redirect_to session[:my_previous_url], notice: "This is not your post to update!!!" unless logic
   end
 
   def update
-    @post = Post.find(params[:id])
-    p session[:my_previous_url]
-     
+    @post = Post.find(params[:id])     
     if @post.update(params[:post].permit(:message))
       redirect_to session[:my_previous_url]
     else
