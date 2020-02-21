@@ -4,27 +4,24 @@
     <title>🦁 Acebook</title>
   </head>
   <style>
-  body{
-    text-align: center;
-    /* background: url(https://images.freecreatives.com/wp-content/uploads/2016/04/Purple-Flower-Website-Background.jpg); */
+  body {
+    background-image: url('https://media1.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif');
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    color: white
+    background-attachment: fixed;
+    background-size: 100% 100%;
   }
   </style>
 
   <body>
     <% if !!flash[:notice] %>
       <% flash.each do |type, message| %>
-        <p><%= message %></p> <br>
+        <h1><%= message %></h1>
       <% end %>
     <% end %>
 
     <%= link_to new_post_path(:wall_id => params[:id]) do %>
-      New post
+      <h1>New post</h1>
     <% end %>
-    
   
     <% @posts.reverse.each do |post| %>
         <div class="post-card" >
@@ -55,7 +52,6 @@
     <% end %>
   <br>
   <br>
-
   </body>
 </html>
 

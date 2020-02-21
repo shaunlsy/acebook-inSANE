@@ -5,7 +5,7 @@ RSpec.feature "Timeline", type: :feature do
   scenario "Can submit posts and view them with created time" do
     Timecop.freeze # freezes the time
     sign_up
-    click_link("See All Posts")
+    click_link("See All AgeBook Posts")
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"

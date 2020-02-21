@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     if @post.user_id == current_user.id
       @post.destroy
     else
-      flash[:notice] = "Thats not your post to delete"
+      flash[:notice] = "Thats not your post to delete!!!"
     end
     redirect_to posts_path
   end
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     logic = @post.user_id == current_user.id
-    redirect_to posts_path, notice: "This is not your post to update" unless logic
+    redirect_to posts_path, notice: "This is not your post to update!!!" unless logic
   end
 
   def update

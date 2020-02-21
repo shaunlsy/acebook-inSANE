@@ -8,7 +8,7 @@ feature "Clicks Username link" do
     post
     sign_up
     
-    click_link("AceBook")
+    click_link("AgeBook")
     click_link(user.username)
     expect(page).to have_content(user.username)
   end 
