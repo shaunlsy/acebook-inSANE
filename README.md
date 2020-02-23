@@ -25,6 +25,10 @@ Shaun Low
 - run `gem install rake`
 - run `rails server` to start server on localhost port 3000
 
+### Live on Heroku
+
+- [Acebook Insane](https://acebook-insane.herokuapp.com/)
+
 ## Customer Requirements
 
 ### User stories

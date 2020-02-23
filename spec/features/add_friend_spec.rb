@@ -11,7 +11,7 @@ feature "A user can add another user as a friend" do
     user2
     post 
     sign_up
-    click_link("See All AgeBook Posts")
+    click_link("See All AceBook Posts")
     click_link(user1.username)
     click_link("Add friend")
     expect(page).to have_content("Added friend.")

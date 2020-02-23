@@ -31,7 +31,13 @@
 @import "base/default";
 
 .navbar {
-    background-color: pink;
+  background: #395590;
+  color: #FFF;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  width: initial;
 }
 
 .update-post-size {
@@ -51,12 +57,3 @@
   padding-bottom: 20px; 
   opacity: 0.8;
 }
-
-// form {
-//     font-size: 16px;
-// }
-
-// #postmessage {
-//     font-size: 22px;
-
-// }
