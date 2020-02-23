@@ -25,11 +25,23 @@ Makers Academy Engineering Group Project to make a Facebook Clone (Acebook)
 - run `$ gem install rake`
 - run `$ rake db:create`
 - run `$ rake db:migrate`
-- run `$ rails server` to start server on localhost port 3000
+- run `$ rails server` 
+- Open your browser and start the server at localhost:3000
+
 
 ### Live on Heroku
 
 - [Acebook Insane](https://acebook-insane.herokuapp.com/)
+
+
+#### Other informations:
+
+1. Fork this repository to `acebook-teamname` and customize
+   the below\*\*
+
+[You can find the engineering project outline here.](https://github.com/makersacademy/course/tree/master/engineering_projects/rails)
+
+2. Trello card wall is here:  https://trello.com/b/JUaLZHFH/insane
 
 ## Customer Requirements
 
@@ -163,17 +175,6 @@ So I can style my posts
 I want line breaks to be accepted
 ```
 
-REQUIRED INSTRUCTIONS:
-
-1. Fork this repository to `acebook-teamname` and customize
-   the below\*\*
-
-[You can find the engineering project outline here.](https://github.com/makersacademy/course/tree/master/engineering_projects/rails)
-
-2. The card wall is here:  https://trello.com/b/JUaLZHFH/insane
-
-3. Link to deployed app: https://acebook-insane.herokuapp.com/
-
 ## Learning Documents 
 
 Please see Learning Documents column on Trello board: https://trello.com/b/JUaLZHFH/insane
@@ -181,17 +182,3 @@ Please see Learning Documents column on Trello board: https://trello.com/b/JUaLZ
 ## How to contribute to this project
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## Quickstart
-
-First, clone this repository. Then:
-
-```bash
-> bundle install
-> bin/rails db:create
-> bin/rails db:migrate
-
-> bundle exec rspec # Run the tests to ensure it works
-> bin/rails server
-```
-Start the server at localhost:3000
