@@ -7,10 +7,10 @@ Makers Academy Engineering Group Project to make a Facebook Clone (Acebook)
 
 ### Team
 
-Alicia Merlino
-Emily Spencer
-Nicolas Raffray
-Shaun Low
+- [Alicia Merlino](https://github.com/acmerlino1)
+- [Emily Spencer](https://github.com/emilyjspencer)
+- [Nicolas Raffray](https://github.com/nicolasraffray/acebook-inSANE/graphs/contributors)
+- [Shaun Low](https://github.com/shaunlsy)
 
 ### Application Overview
 
@@ -20,10 +20,12 @@ Shaun Low
 ### How to Install
 
 - git clone this repo
-- run `gem install bundle`
-- run `bundle`
-- run `gem install rake`
-- run `rails server` to start server on localhost port 3000
+- run `$ gem install bundle`
+- run `$ bundle`
+- run `$ gem install rake`
+- run `$ rake db:create`
+- run `$ rake db:migrate`
+- run `$ rails server` to start server on localhost port 3000
 
 ### Live on Heroku
 
