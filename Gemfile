@@ -1,4 +1,4 @@
-ruby '2.5.0'
+ruby '2.6.5'
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
